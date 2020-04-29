@@ -111,7 +111,7 @@ func (f *TextFormatter) init(entry *Entry) {
 	}
 }
 
-func (f *TextFormatter) isColored() bool {
+func (f *TextFormatter) IsColored() bool {
 	isColored := f.ForceColors || (f.isTerminal && (runtime.GOOS != "windows"))
 
 	if f.EnvironmentOverrideColors {
