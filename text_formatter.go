@@ -172,7 +172,7 @@ func (f *TextFormatter) Format(entry *Entry) ([]byte, error) {
 			sort.Strings(keys)
 			fixedKeys = append(fixedKeys, keys...)
 		} else {
-			if !f.isColored() {
+			if !f.IsColored() {
 				fixedKeys = append(fixedKeys, keys...)
 				f.SortingFunc(fixedKeys)
 			} else {
@@ -196,7 +196,7 @@ func (f *TextFormatter) Format(entry *Entry) ([]byte, error) {
 	if timestampFormat == "" {
 		timestampFormat = defaultTimestampFormat
 	}
-	if f.isColored() {
+	if f.IsColored() {
 		f.printColored(b, entry, keys, data, timestampFormat)
 	} else {
 
