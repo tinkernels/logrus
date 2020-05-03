@@ -111,7 +111,7 @@ func (f *TextFormatter) init(entry *Entry) {
 	}
 }
 
-func (f *TextFormatter) IsColored() bool {
+func (f *TextFormatter) isColored() bool {
 	isColored := f.ForceColors || (f.isTerminal && (runtime.GOOS != "windows"))
 
 	if f.EnvironmentOverrideColors {
@@ -172,7 +172,7 @@ func (f *TextFormatter) Format(entry *Entry) ([]byte, error) {
 			sort.Strings(keys)
 			fixedKeys = append(fixedKeys, keys...)
 		} else {
-			if !f.IsColored() {
+			if !f.isColored() {
 				fixedKeys = append(fixedKeys, keys...)
 				f.SortingFunc(fixedKeys)
 			} else {
@@ -196,7 +196,7 @@ func (f *TextFormatter) Format(entry *Entry) ([]byte, error) {
 	if timestampFormat == "" {
 		timestampFormat = defaultTimestampFormat
 	}
-	if f.IsColored() {
+	if f.isColored() {
 		f.printColored(b, entry, keys, data, timestampFormat)
 	} else {
 
